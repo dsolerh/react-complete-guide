@@ -1,8 +1,9 @@
+import Card from '../Card/Card';
 import './Expenses.css'
 
-function Expenses({ children }: { children: JSX.Element[] }) {
+function Expenses({ children }: { children: JSX.Element[] }): JSX.Element {
     return (
-        <div className="expenses">{children}</div>
+        <Card id='expenses' className="expenses">{children}</Card>
     );
 }
 
