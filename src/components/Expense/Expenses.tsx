@@ -1,4 +1,4 @@
-import Card from '../Card/Card';
+import Card from '../UI/Card/Card';
 import './Expenses.css'
 
 function Expenses({ children }: { children: JSX.Element[] }): JSX.Element {
