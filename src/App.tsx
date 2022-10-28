@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ExpenseItem, { ExpenseProps } from './components/Expense/ExpenseItem';
+import Expenses from './components/Expense/Expenses';
 
 function App() {
   const expenses: ExpenseProps[] = [
@@ -33,7 +34,9 @@ function App() {
   return (
     <div>
       <h2>Let's get started</h2>
-      {expenses.map(prop => (<ExpenseItem {...prop}></ExpenseItem>))}
+      <Expenses>
+        {expenses.map(prop => (<ExpenseItem {...prop}></ExpenseItem>))}
+      </Expenses>
     </div>
   );
 }
