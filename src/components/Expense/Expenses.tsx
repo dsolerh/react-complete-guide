@@ -3,6 +3,7 @@ import { ValueChangeHandler } from '../../types/ValueChangeHandler';
 import Card from '../UI/Card/Card';
 import './Expenses.css'
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesList from './ExpensesList';
 
 interface ExpensesProps extends ContainerComponent {
     onFilterChange: ValueChangeHandler<string>
@@ -13,9 +14,9 @@ function Expenses({ children, onFilterChange, filterValue }: ExpensesProps): JSX
     return (
         <Card id='expenses' className="expenses">
             <ExpensesFilter onValueChange={onFilterChange} value={filterValue}/>
-            <div>
+            <ExpensesList>
                 {children}
-            </div>
+            </ExpensesList>
         </Card>
     );
 }
