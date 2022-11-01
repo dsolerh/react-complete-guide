@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ExpenseItem, { ExpenseProps } from './components/Expense/ExpenseItem';
 import Expenses from './components/Expense/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
   const expenses: ExpenseProps[] = [
@@ -31,10 +32,13 @@ function App() {
     },
   ]
 
+  const [filterDate, setFilterDate] = useState('')
+
   return (
     <div>
       <h2>Let's get started</h2>
-      <Expenses>
+      <NewExpense onNewExpense={e => expenses.push({ id: e.id!, amount: e.amount, date: new Date(e.date), title: e.title })} />
+      <Expenses onFilterChange={(e)=> setFilterDate(e.target.value)}>
         {expenses.map(prop => (<ExpenseItem {...prop}></ExpenseItem>))}
       </Expenses>
     </div>
