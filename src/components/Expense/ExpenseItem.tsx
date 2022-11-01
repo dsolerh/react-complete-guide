@@ -1,12 +1,11 @@
+import { Expense } from '../NewExpense/Expense'
 import Card from '../UI/Card/Card'
 import ExpenseDate from './ExpenseDate'
 import './ExpenseItem.css'
 
-export interface ExpenseProps {
+export interface ExpenseProps extends Expense {
     id: string
     date: Date
-    title: string
-    amount: number
 }
 
 function ExpenseItem({ id, date, title, amount }: ExpenseProps): JSX.Element {

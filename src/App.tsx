@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import './App.css';
-import ExpenseItem from './components/Expense/ExpenseItem';
 import Expenses from './components/Expense/Expenses';
 import { Expense } from './components/NewExpense/Expense';
 import NewExpense from './components/NewExpense/NewExpense';
 
-const EXPENSES = [
+const EXPENSES: Expense[] = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -45,14 +44,12 @@ function App() {
     setFilterDate(val)
   }
 
-  const filteredData = expenses.filter(v => v.date.getFullYear() === +date)
+  const filteredData = expenses.filter(v => (v.date as Date).getFullYear() === +date)
 
   return (
     <div>
       <NewExpense onNewExpense={addExpense} />
-      <Expenses onFilterChange={filterDate} filterValue={date}>
-        {filteredData.map(prop => (<ExpenseItem key={prop.id} {...prop}></ExpenseItem>))}
-      </Expenses>
+      <Expenses onFilterChange={filterDate} filterValue={date} expences={filteredData}/>
     </div>
   );
 }

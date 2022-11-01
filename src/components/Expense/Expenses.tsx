@@ -1,21 +1,32 @@
-import { ContainerComponent } from '../../types/Components';
 import { ValueChangeHandler } from '../../types/ValueChangeHandler';
+import { Expense } from '../NewExpense/Expense';
 import Card from '../UI/Card/Card';
-import './Expenses.css'
+import ExpenseItem from './ExpenseItem';
 import ExpensesFilter from './ExpensesFilter';
 import ExpensesList from './ExpensesList';
+import './Expenses.css'
+import ExpensesChart from './ExpensesChart';
 
-interface ExpensesProps extends ContainerComponent {
+interface ExpensesProps {
     onFilterChange: ValueChangeHandler<string>
     filterValue: string
+    expences: Expense[]
 }
 
-function Expenses({ children, onFilterChange, filterValue }: ExpensesProps): JSX.Element {
+function Expenses({ onFilterChange, filterValue, expences }: ExpensesProps): JSX.Element {
     return (
         <Card id='expenses' className="expenses">
             <ExpensesFilter onValueChange={onFilterChange} value={filterValue}/>
+            <ExpensesChart expenses={expences}/>
             <ExpensesList>
-                {children}
+                {expences.map(prop => (
+                    <ExpenseItem 
+                        {...prop}
+                        key={prop.id}
+                        id={prop.id as string}
+                        date={prop.date as Date}
+                    />
+                ))}
             </ExpensesList>
         </Card>
     );
