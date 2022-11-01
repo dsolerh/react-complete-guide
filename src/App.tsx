@@ -32,13 +32,13 @@ function App() {
     },
   ]
 
-  const [filterDate, setFilterDate] = useState('')
+  const [filterDate, setFilterDate] = useState('2020')
 
   return (
     <div>
       <h2>Let's get started</h2>
       <NewExpense onNewExpense={e => expenses.push({ id: e.id!, amount: e.amount, date: new Date(e.date), title: e.title })} />
-      <Expenses onFilterChange={(e)=> setFilterDate(e.target.value)}>
+      <Expenses onFilterChange={val=> setFilterDate(val)} filterValue={filterDate}>
         {expenses.map(prop => (<ExpenseItem {...prop}></ExpenseItem>))}
       </Expenses>
     </div>
