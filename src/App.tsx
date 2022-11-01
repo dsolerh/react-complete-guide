@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import ExpenseItem from './components/Expense/ExpenseItem';
 import Expenses from './components/Expense/Expenses';
 import { Expense } from './components/NewExpense/Expense';
 import NewExpense from './components/NewExpense/NewExpense';
 
-const INITIAL_EXPENSES = [
+const EXPENSES = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -33,19 +33,26 @@ const INITIAL_EXPENSES = [
 ];
 
 function App() {
-  const [expenses, setExpenses] = useState(INITIAL_EXPENSES)
-  const [filterDate, setFilterDate] = useState('2020')
+  const [expenses, setExpenses] = useState(EXPENSES)
+  const [date, setFilterDate] = useState('2020')
 
   function addExpense(e: Expense) {
-    setExpenses((prev)=> [{ id: e.id!, amount: e.amount, date: new Date(e.date), title: e.title }, ...prev])
+    const exp = { id: e.id!, amount: e.amount, date: new Date(e.date), title: e.title }
+    EXPENSES.push(exp)
+    setExpenses(prev => [exp, ...prev])
+  }
+
+  function filterDate(val: string) {
+    setExpenses(EXPENSES.filter(v => v.date.getFullYear() === +val))
+    setFilterDate(val)
   }
 
   return (
     <div>
       <h2>Let's get started</h2>
       <NewExpense onNewExpense={addExpense} />
-      <Expenses onFilterChange={val => setFilterDate(val)} filterValue={filterDate}>
-        {expenses.map(prop => (<ExpenseItem {...prop}></ExpenseItem>))}
+      <Expenses onFilterChange={filterDate} filterValue={date}>
+        {expenses.map(prop => (<ExpenseItem key={prop.id} {...prop}></ExpenseItem>))}
       </Expenses>
     </div>
   );
