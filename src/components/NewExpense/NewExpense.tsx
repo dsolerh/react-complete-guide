@@ -14,6 +14,7 @@ function NewExpense({ onNewExpense }: NewExpenseProps) {
     function saveExpenseDataHandler(data: Expense) {
         data = { ...data, id: Math.random().toString() }
         onNewExpense(data)
+        setShowForm(false)
     }
 
     const content = showForm
