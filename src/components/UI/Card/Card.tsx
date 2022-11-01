@@ -1,6 +1,11 @@
+import { ClassComponent, ContainerComponent } from '../../../types/Components';
 import './Card.css'
 
-function Card({ id, className, children }: { id: string, className: string, children: JSX.Element[] }): JSX.Element {
+interface CardProps extends ContainerComponent, ClassComponent {
+    id: string
+}
+
+function Card({ id, className, children }: CardProps): JSX.Element {
     const clss = `card ${className}`
     return (
         <div id={id} className={clss}>{children}</div>
