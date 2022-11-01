@@ -1,8 +1,9 @@
 
+import { ValueChangeHandler } from '../../types/ValueChangeHandler';
 import './ExpensesFilter.css';
 
 interface ExpensesFilterProps {
-  onValueChange: (val: string) => void
+  onValueChange: ValueChangeHandler<string>
   value: string
 }
 

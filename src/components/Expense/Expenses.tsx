@@ -1,10 +1,11 @@
+import { ValueChangeHandler } from '../../types/ValueChangeHandler';
 import Card from '../UI/Card/Card';
 import './Expenses.css'
 import ExpensesFilter from './ExpensesFilter';
 
 interface ExpensesProps {
     children: JSX.Element[] 
-    onFilterChange: (val: string)=>void
+    onFilterChange: ValueChangeHandler<string>
     filterValue: string
 }
 

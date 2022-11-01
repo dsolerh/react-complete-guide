@@ -1,0 +1,1 @@
+export type ValueChangeHandler<T> = (val: T) => void
