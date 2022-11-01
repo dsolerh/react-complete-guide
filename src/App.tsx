@@ -49,7 +49,6 @@ function App() {
 
   return (
     <div>
-      <h2>Let's get started</h2>
       <NewExpense onNewExpense={addExpense} />
       <Expenses onFilterChange={filterDate} filterValue={date}>
         {filteredData.map(prop => (<ExpenseItem key={prop.id} {...prop}></ExpenseItem>))}
