@@ -38,21 +38,21 @@ function App() {
 
   function addExpense(e: Expense) {
     const exp = { id: e.id!, amount: e.amount, date: new Date(e.date), title: e.title }
-    EXPENSES.push(exp)
     setExpenses(prev => [exp, ...prev])
   }
 
   function filterDate(val: string) {
-    setExpenses(EXPENSES.filter(v => v.date.getFullYear() === +val))
     setFilterDate(val)
   }
+
+  const filteredData = expenses.filter(v => v.date.getFullYear() === +date)
 
   return (
     <div>
       <h2>Let's get started</h2>
       <NewExpense onNewExpense={addExpense} />
       <Expenses onFilterChange={filterDate} filterValue={date}>
-        {expenses.map(prop => (<ExpenseItem key={prop.id} {...prop}></ExpenseItem>))}
+        {filteredData.map(prop => (<ExpenseItem key={prop.id} {...prop}></ExpenseItem>))}
       </Expenses>
     </div>
   );
