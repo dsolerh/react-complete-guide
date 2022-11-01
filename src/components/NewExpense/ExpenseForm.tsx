@@ -16,7 +16,7 @@ function ExpenseForm({ onTitleChange, onAmountChange, onDateChange, onDataSave }
 
     function Submit(e:FormEvent) {
         e.preventDefault()
-        alert(JSON.stringify({title,amount,date}))
+        // alert(JSON.stringify({title,amount,date}))
         onDataSave && onDataSave({title,amount,date})
     }
 

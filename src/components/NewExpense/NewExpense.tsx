@@ -1,9 +1,10 @@
+import { ValueChangeHandler } from '../../types/ValueChangeHandler';
 import { Expense } from './Expense';
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css'
 
 interface NewExpenseProps {
-    onNewExpense: (e: Expense) => void
+    onNewExpense: ValueChangeHandler<Expense>
 }
 
 function NewExpense({ onNewExpense }: NewExpenseProps) {
