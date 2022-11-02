@@ -1,5 +1,7 @@
+import { ReactNode } from "react"
+
 export interface ContainerComponent {
-    children: JSX.Element[] | JSX.Element
+    children: ReactNode
 }
 
 export interface ClassComponent {

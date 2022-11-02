@@ -22,7 +22,7 @@ function ExpensesChart({expenses}: ExpencesChartProps) {
     ]
 
     for (const expense of expenses) {
-        const month = (expense.date as Date).getMonth()
+        const month = new Date(expense.date).getMonth()
         chartDP[month].value += expense.amount
     }
 
