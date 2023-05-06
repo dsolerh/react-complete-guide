@@ -49,7 +49,7 @@ function App() {
   return (
     <div>
       <NewExpense onNewExpense={addExpense} />
-      <Expenses onFilterChange={filterDate} filterValue={date} expences={filteredData}/>
+      <Expenses onFilterChange={filterDate} filterValue={date} expences={filteredData} />
     </div>
   );
 }
